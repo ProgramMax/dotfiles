@@ -1,0 +1,39 @@
+urxvt*scrollBar:       false
+urxvt*secondaryScroll: true
+urxvt*saveLines:       1000
+
+xft.antialias: true
+xft.hinting:   true
+xft.hintstyle: hintsligiht
+
+urxvt*font: xft:Source Code Pro:pixelsize=10:antialias=true:hinting=true,fixed:pixelsize:10
+urxvt*letterSpace: -1
+
+urxvt*background: #2c2c2c
+urxvt*foreground: #9f9f9f
+*background:      #111111
+*foreground:      #babdb6
+! black + dark grey
+urxvt*color0:     #000000
+urxvt*color8:     #555753
+! dark red + red
+urxvt*color1:     #ff6565
+urxvt*color9:     #ff8d8d
+! dark green + green
+urxvt*color2:     #93d44f
+urxvt*color10:    #c8e7a8
+! dark yellow + yellow
+urxvt*color3:     #eab93d
+urxvt*color11:    #ffc123
+! dark blue + blue
+urxvt*color4:     #204a87
+urxvt*color12:    #3465a4
+! dark magenta + magenta
+urxvt*color5:     #ce5c00
+urxvt*color13:    #f57900
+! dark cyan + cyan
+urxvt*color6:     #89b6e2
+urxvt*color14:    #46a4ff
+!light grey + white
+urxvt*color7:     #cccccc
+urxvt*color15:    #ffffff
