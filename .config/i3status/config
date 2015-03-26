@@ -1,0 +1,67 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+	colors          = true
+	color_good      = "#88b090"
+	color_degraded  = "#ccdc90"
+	color_bad       = "#e89393"
+	# color_separator = "#111111"
+	interval        = 5
+}
+
+order += "volume master"
+order += "cpu_usage"
+order += "load"
+#order += "disk /"
+order += "wireless wls1"
+order += "ethernet enp3s0"
+order += "battery 0"
+order += "tztime local"
+
+volume master {
+	#format       = "%volume"
+	#format_muted = "%volume"
+	device       = "default"
+	mixer        = "Master"
+	mixer_idx    = 0
+}
+
+cpu_usage {
+		format = "CPU: %usage"
+}
+
+wireless wls1 {
+        format_up   = "W: %quality"
+        format_down = "W: down"
+}
+
+ethernet enp3s0 {
+        format_up   = "E: up"
+        format_down = "E: down"
+}
+
+battery 0 {
+	format                   = "BATT: %status %percentage %remaining"
+	integer_battery_capacity = true
+	#low_threshold            = 33
+	#thresshold_type          = percentage
+	#hide_seconds             = true
+}
+
+tztime local {
+        format = "TIME: %Y-%m-%d %H:%M:%S"
+}
+
+load {
+        format = "LOAD: %1min"
+}
+
+disk "/" {
+        format = "HDD: %avail"
+}
