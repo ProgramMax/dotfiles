@@ -132,7 +132,16 @@ function make_ps1() {
 	PS1=$PS1$NewLine'\$ '
 
 
-	PS1="$BoldWhite\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[$Red\342\234\227$BoldWhite]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo "$Red\u$BoldWhite@$IntenseCyan\h"; else echo "$Yellow\u$BoldWhite@$IntenseCyan\h"; fi)$BoldWhite]\342\224\200[$Green\w$BoldWhite]\n$BoldWhite\342\224\224\342\224\200\342\224\200\076 $ResetColor"
+	PS1="$BoldWhite\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[$Red"
+
+	#PS1=$PS1'$(
+	#	ErrorCode=$?
+	#	if $ErrorCode &>/dev/null ; then
+	#		echo -n "'$BoldRed'$ErrorCode'$ResetColor'"
+	#	fi
+	#)'
+	# PS1=$PS1"\342\234\227✓"
+	PS1=$PS1"X$BoldWhite]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo "$Red\u$BoldWhite@$IntenseCyan\h"; else echo "$Yellow\u$BoldWhite@$IntenseCyan\h"; fi)$BoldWhite]\342\224\200[$Green\w$BoldWhite]\n$BoldWhite\342\224\224\342\224\200\342\224\200\076 $ResetColor"
 
 	export PS1
 }

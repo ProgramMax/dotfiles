@@ -18,36 +18,70 @@ general {
 order += "volume master"
 order += "cpu_usage"
 order += "load"
-#order += "disk /"
+# order += "cpu_temperature 0"
+# order += "disk /"
 order += "wireless wls1"
 order += "ethernet enp3s0"
+# order += "run_watch DHCP"
+# order += "run_watch VPNC"
+order += "path_exists VPN"
 order += "battery 0"
 order += "tztime local"
 
 volume master {
-	#format       = "%volume"
-	#format_muted = "%volume"
+	format       = "♪: %volume"
+	format_muted = "♪: muted (%volume)"
 	device       = "default"
 	mixer        = "Master"
 	mixer_idx    = 0
 }
 
 cpu_usage {
-		format = "CPU: %usage"
+	format = "CPU: %usage"
+}
+
+load {
+	format = "Load: %1min"
+}
+
+cpu_temperature 0 {
+	format = "T: %degrees °C"
+	path   = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+
+disk "/" {
+	# format = "HDD: %free (%avail)/%total %percentage_used"
+	format = "HDD: %avail available"
 }
 
 wireless wls1 {
-        format_up   = "W: %quality"
-        format_down = "W: down"
+	# format_up   = "W: %quality"
+	format_up   = "W: (%quality at %essid, %bitrate) %ip"
+	format_down = "W: down"
 }
 
 ethernet enp3s0 {
-        format_up   = "E: up"
-        format_down = "E: down"
+	# format_up   = "E: up"
+	format_up   = "E: %ip (%speed)"
+	format_down = "E: down"
+}
+
+run_watch DHCP {
+	pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPNC {
+	pidfile = "/var/run/vpnc/pid"
+}
+
+path_exists VPN {
+	path = "/proc/sys/net/ipv4/conf/tun0"
 }
 
 battery 0 {
-	format                   = "BATT: %status %percentage %remaining"
+	format                   = "%status %percentage %remaining"
+	format_down              = "No battery"
+	path                     = "/sys/class/power_supply/BAT%d/uevent"
 	integer_battery_capacity = true
 	#low_threshold            = 33
 	#thresshold_type          = percentage
@@ -55,13 +89,5 @@ battery 0 {
 }
 
 tztime local {
-        format = "TIME: %Y-%m-%d %H:%M:%S"
-}
-
-load {
-        format = "LOAD: %1min"
-}
-
-disk "/" {
-        format = "HDD: %avail"
+	format = "%a %Y-%m-%d %I:%M:%S %P"
 }
