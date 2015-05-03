@@ -4,6 +4,8 @@
 shopt -s checkwinsize
 
 function make_ps1() {
+	local ErrorCode=$?
+
 	# Reset
 	local ResetColor="\[\033[0m\]"
 
@@ -132,7 +134,6 @@ function make_ps1() {
 	PS1=$PS1$NewLine'\$ '
 
 
-	local ErrorCode=$?
 
 
 
@@ -141,7 +142,7 @@ function make_ps1() {
 
 	# If there is an error code, print it in a box
 	# local ErrorCode=$?
-	if [ $ErrorCode -eq 0 ] ; then
+	if [ $ErrorCode != 0 ] ; then
 		PS1=$PS1"[$Red$ErrorCode$BoldWhite]─"
 	fi
 
@@ -169,7 +170,7 @@ function make_ps1() {
 #	PS1="\u@\h \w \$([[ \$? != 0 ]] && echo \":( \")\$ "
 #fi
 
-make_ps1
+PROMPT_COMMAND=make_ps1
 
 PS2="└─> "
 PS3="> "
