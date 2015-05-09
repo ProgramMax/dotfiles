@@ -82,30 +82,11 @@ Time24hhmmss="\t"
 PathShort="\W"
 PathFull="\w"
 NewLine="\n"
+Username="\u"
+MachineName="\h"
 
 function make_ps1() {
 	local ErrorCode=$?
-
-	# Print current git branch if it exists
-	#PS1=$PS1'$(
-	#	if git branch &>/dev/null ; then
-	#		echo -n " '$IntenseBlack'(" ;
-	#		if git status --porcelain | grep -q "\\S" ; then
-	#			# Changes to working tree
-	#			INDEX=$(git status --porcelain | cut -c1 | grep -v "[?U]" | grep "\\S" | sort | uniq --count | tr AMD +~- | sed '\''s/\\s*\([0-9]\+\) \(.\)\\s*/\2\1/'\'' | xargs)
-	#			WORKING=$(git status --porcelain | cut -c2 | grep "\\S" | sort | uniq --count | tr "AMD?U" "+~\\-?!" | sed '\''S/\\s*\([0-9]\+\) \(.\)\\s*/\2\1/'\'' | xargs)
-	#			echo -n "'$IntenseRed'$(__git_ps1 "%s") "
-	#			echo -n "'$Green'$INDEX"
-	#			[ -n "$INDEX" -a -n "$WORKING" ] && echo -n "'$IntenseBlack' | "
-	#			echo -n "'$Red'$WORKING";
-	#		else
-	#			# Clean repository - nothing to commit
-	#			echo -n "'$Green'$(__git_ps1 "%s")"
-	#		fi;
-	#		echo -n "'$IntenseBlack')'$ResetColor'";
-	#	fi)'
-	PS1=$PS1$NewLine'\$ '
-
 
 
 
@@ -126,7 +107,7 @@ function make_ps1() {
 	else
 		PS1=$PS1"$Yellow"
 	fi
-	PS1=$PS1"\u$BoldWhite@$IntenseCyan\h$BoldWhite]─"
+	PS1=$PS1$Username$BoldWhite@$IntenseCyan$MachineName$BoldWhite"]─"
 
 	# Print the working directory, highlighting the git root
 	PS1=$PS1"[$Green"
@@ -161,6 +142,8 @@ function make_ps1() {
 		PS1=$PS1$(git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/\1/')$BoldWhite"]"
 	fi
 	PS1=$PS1"\n"
+
+
 
 
 	# Second line
