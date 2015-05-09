@@ -82,11 +82,15 @@ battery 0 {
 	# format                   = "%status %percentage %remaining %emptytime %consumption"
 	format                   = "%status %percentage %remaining"
 	format_down              = "No battery"
+	status_chr               = "⚡: charging"
+	status_bat               = "⚡: battery"
+	status_full              = "⚡: full"
 	path                     = "/sys/class/power_supply/BAT%d/uevent"
 	integer_battery_capacity = true
-	#low_threshold            = 33
-	#thresshold_type          = percentage
-	#hide_seconds             = true
+	low_threshold            = 15
+	threshold_type           = percentage
+	last_full_capacity       = true
+	hide_seconds             = true
 }
 
 tztime local {
