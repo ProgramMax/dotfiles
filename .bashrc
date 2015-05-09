@@ -3,7 +3,6 @@
 
 shopt -s checkwinsize
 
-ErrorCode=$?
 
 # Reset
 ResetColor="\[\033[0m\]"
@@ -85,33 +84,8 @@ PathFull="\w"
 NewLine="\n"
 
 function make_ps1() {
-	# Print previous error code in red
-	PS1='$(es=$? ; case $es in 0|130) ;; *) echo "'$BoldRed'$es|'$ResetColor'" ;; esac)'
-	# Print current time in yellow
-	PS1=$PS1"$BoldYellow$Time24hhmmss "
-	# Print user@host in green if direct connection, cyan otherwise
-	PS1=$PS1'$(
-		if [ -n "$SSH_CLIENT" ] ; then
-			echo "'$BoldCyan'"
-		else
-			echo "'$BoldGreen'"
-		fi)'"\u@\h$ResetColor"
-	# Print path in blue, highlighting git root
-	PS1=$PS1":"'$(
-		path="\w"
-		
-		if git branch &>/dev/null ; then
-			git_root=$(git rev-parse --show-toplevel)
-			if [ ${git_root#HOME} != ${git_root} ] ; then
-				git_root=\~${git_root#HOME}
-			fi
-			echo -n "'$BoldBlue'$(dirname $git_root)/"
-			echo -n "'$BoldPurple'$(basename $git_root)"
-			echo -n "'$BoldBlue'${path#$git_root}"
-		else
-			echo -n "'$BoldBlue'$path"
-		fi
-	)'"$ResetColor"
+	local ErrorCode=$?
+
 	# Print current git branch if it exists
 	#PS1=$PS1'$(
 	#	if git branch &>/dev/null ; then
@@ -140,20 +114,42 @@ function make_ps1() {
 	PS1="$BoldWhite┌─"
 
 	# If there is an error code, print it in a box
-	# local ErrorCode=$?
 	if [ $ErrorCode != 0 ] ; then
 		PS1=$PS1"[$Red$ErrorCode$BoldWhite]─"
 	fi
 
+	# Print the username and system name
 	PS1=$PS1"["
-
 	# If we are root, show the username as red
 	if [ "$(whoami)" == 'root' ]; then
 		PS1=$PS1"$Red"
 	else
 		PS1=$PS1"$Yellow"
 	fi
-	PS1=$PS1"\u$BoldWhite@$IntenseCyan\h$BoldWhite]─[$Green\w$BoldWhite]\n"
+	PS1=$PS1"\u$BoldWhite@$IntenseCyan\h$BoldWhite]─"
+
+	# Print the working directory, highlighting the git root
+	PS1=$PS1"[$Green"
+	local Path=$PWD
+	if [ "${Path#$HOME}" != "$Path" ] ; then
+		Path="~${Path#$HOME}"
+	fi
+
+	if git branch &>/dev/null ; then
+		local GitRoot=$(git rev-parse --show-toplevel)
+		if [ "${GitRoot#$HOME}" != "$GitRoot" ] ; then
+			GitRoot="~${GitRoot#$HOME}"
+		fi
+		PS1=$PS1$(dirname $GitRoot)"/"
+		PS1=$PS1$Purple$(basename $GitRoot)
+		PS1=$PS1$Green${Path#$GitRoot}
+	else
+		PS1=$PS1$Green$Path
+	fi
+	PS1=$PS1$BoldWhite"]\n"
+
+
+
 
 	# Second line
 	PS1=$PS1"$BoldWhite└──> $ResetColor"
@@ -167,7 +163,7 @@ function make_ps2() {
 }
 
 function make_ps3() {
-	PS3="$BoldWhite$> $ResetColor"
+	PS3="$BoldWhite> $ResetColor"
 	export PS3
 }
 
