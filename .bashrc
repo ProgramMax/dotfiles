@@ -150,9 +150,16 @@ function make_ps1() {
 
 	# Print the git branch if it exists
 	if git branch &>/dev/null ; then
-		PS1=$PS1"─["$Green$(git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/\1/')$BoldWhite"]"
+		PS1=$PS1"─["
+		if git status --porcelain | grep -q "\\S" ; then
+			# There are changes to working tree
+			PS1=$PS1$Purple
+		else
+			# There is nothing to commit
+			PS1=$PS1$Green
+		fi
+		PS1=$PS1$(git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/\1/')$BoldWhite"]"
 	fi
-
 	PS1=$PS1"\n"
 
 
