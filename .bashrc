@@ -146,9 +146,14 @@ function make_ps1() {
 	else
 		PS1=$PS1$Green$Path
 	fi
-	PS1=$PS1$BoldWhite"]\n"
+	PS1=$PS1$BoldWhite"]"
 
+	# Print the git branch if it exists
+	if git branch &>/dev/null ; then
+		PS1=$PS1"─["$Green$(git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/\1/')$BoldWhite"]"
+	fi
 
+	PS1=$PS1"\n"
 
 
 	# Second line
