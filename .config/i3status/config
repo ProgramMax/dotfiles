@@ -24,7 +24,7 @@ order += "wireless wls1"
 order += "ethernet enp3s0"
 # order += "run_watch DHCP"
 # order += "run_watch VPNC"
-order += "path_exists VPN"
+# order += "path_exists VPN"
 order += "battery 0"
 order += "tztime local"
 
@@ -55,14 +55,12 @@ disk "/" {
 }
 
 wireless wls1 {
-	# format_up   = "W: %quality"
 	# format_up   = "W: %quality on %essid, %bitrate %ip"
 	format_up   = "W: %quality on %essid, %bitrate"
 	format_down = "W: down"
 }
 
 ethernet enp3s0 {
-	# format_up   = "E: up"
 	# format_up   = "E: %ip (%speed)"
 	format_up   = "E: %speed"
 	format_down = "E: down"
@@ -81,6 +79,7 @@ path_exists VPN {
 }
 
 battery 0 {
+	# format                   = "%status %percentage %remaining %emptytime %consumption"
 	format                   = "%status %percentage %remaining"
 	format_down              = "No battery"
 	path                     = "/sys/class/power_supply/BAT%d/uevent"
