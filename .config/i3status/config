@@ -94,5 +94,6 @@ battery 0 {
 }
 
 tztime local {
-	format = "%a %Y-%m-%d %I:%M:%S %P"
+	# format = "📅 %a %Y-%m-%d  🕓 %I:%M:%S %P"
+	format = "%a %Y-%m-%d  %I:%M:%S %P"
 }
