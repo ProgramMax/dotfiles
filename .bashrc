@@ -3,89 +3,88 @@
 
 shopt -s checkwinsize
 
+ErrorCode=$?
+
+# Reset
+ResetColor="\[\033[0m\]"
+
+# Regular colors
+Black="\[\033[0;30m\]"
+Red="\[\033[0;31m\]"
+Green="\[\033[0;32m\]"
+Yellow="\[\033[0;33m\]"
+Blue="\[\033[0;34m\]"
+Purple="\[\033[0;35m\]"
+Cyan="\[\033[0;36m\]"
+White="\[\033[0;37m\]"
+
+# Bold
+BoldBlack="\[\033[1;30m\]"
+BoldRed="\[\033[1;31m\]"
+BoldGreen="\[\033[1;32m\]"
+BoldYellow="\[\033[1;33m\]"
+BoldBlue="\[\033[1;34m\]"
+BoldPurple="\[\033[1;35m\]"
+BoldCyan="\[\033[1;36m\]"
+BoldWhite="\[\033[1;37m\]"
+
+# Underline
+UnderlineBlack="\[\033[4;30m\]"
+UnderlineRed="\[\033[4;31m\]"
+UnderlineGreen="\[\033[4;32m\]"
+UnderlineYellow="\[\033[4;33m\]"
+UnderlineBlue="\[\033[4;34m\]"
+UnderlinePurple="\[\033[4;35m\]"
+UnderlineCyan="\[\033[4;36m\]"
+UnderlineWhite="\[\033[4;37m\]"
+
+# Background
+OnBlack="\[\033[40m\]"
+OnRed="\[\033[41m\]"
+OnGreen="\[\033[42m\]"
+OnYellow="\[\033[43m\]"
+OnBlue="\[\033[44m\]"
+OnPurple="\[\033[45m\]"
+OnCyan="\[\033[46m\]"
+OnWhite="\[\033[47m\]"
+
+# High intensity
+IntenseBlack="\[\033[0;90m\]"
+IntenseRed="\[\033[0;91m\]"
+IntenseGreen="\[\033[0;92m\]"
+IntenseYellow="\[\033[0;93m\]"
+IntenseBlue="\[\033[0;94m\]"
+IntensePurple="\[\033[0;95m\]"
+IntenseCyan="\[\033[0;96m\]"
+IntenseWhite="\[\033[0;97m\]"
+
+# Bold high intensity
+BoldIntenseBlack="\[\033[1;90m\]"
+BoldIntenseRed="\[\033[1;91m\]"
+BoldIntenseGreen="\[\033[1;92m\]"
+BoldIntenseYellow="\[\033[1;93m\]"
+BoldIntenseBlue="\[\033[1;94m\]"
+BoldIntensePurple="\[\033[1;95m\]"
+BoldIntenseCyan="\[\033[1;96m\]"
+BoldIntenseWhite="\[\033[1;97m\]"
+
+# High intensity background
+OnIntenseBlack="\[\033[0;100m\]"
+OnIntenseRed="\[\033[0;101m\]"
+OnIntenseGreen="\[\033[0;102m\]"
+OnIntenseYellow="\[\033[0;103m\]"
+OnIntenseBlue="\[\033[0;104m\]"
+OnIntensePurple="\[\033[0;105m\]"
+OnIntenseCyan="\[\033[0;106m\]"
+OnIntenseWhite="\[\033[0;107m\]"
+
+# Variables
+Time24hhmmss="\t"
+PathShort="\W"
+PathFull="\w"
+NewLine="\n"
+
 function make_ps1() {
-	local ErrorCode=$?
-
-	# Reset
-	local ResetColor="\[\033[0m\]"
-
-	# Regular colors
-	local Black="\[\033[0;30m\]"
-	local Red="\[\033[0;31m\]"
-	local Green="\[\033[0;32m\]"
-	local Yellow="\[\033[0;33m\]"
-	local Blue="\[\033[0;34m\]"
-	local Purple="\[\033[0;35m\]"
-	local Cyan="\[\033[0;36m\]"
-	local White="\[\033[0;37m\]"
-
-	# Bold
-	local BoldBlack="\[\033[1;30m\]"
-	local BoldRed="\[\033[1;31m\]"
-	local BoldGreen="\[\033[1;32m\]"
-	local BoldYellow="\[\033[1;33m\]"
-	local BoldBlue="\[\033[1;34m\]"
-	local BoldPurple="\[\033[1;35m\]"
-	local BoldCyan="\[\033[1;36m\]"
-	local BoldWhite="\[\033[1;37m\]"
-
-	# Underline
-	local UnderlineBlack="\[\033[4;30m\]"
-	local UnderlineRed="\[\033[4;31m\]"
-	local UnderlineGreen="\[\033[4;32m\]"
-	local UnderlineYellow="\[\033[4;33m\]"
-	local UnderlineBlue="\[\033[4;34m\]"
-	local UnderlinePurple="\[\033[4;35m\]"
-	local UnderlineCyan="\[\033[4;36m\]"
-	local UnderlineWhite="\[\033[4;37m\]"
-
-	# Background
-	local OnBlack="\[\033[40m\]"
-	local OnRed="\[\033[41m\]"
-	local OnGreen="\[\033[42m\]"
-	local OnYellow="\[\033[43m\]"
-	local OnBlue="\[\033[44m\]"
-	local OnPurple="\[\033[45m\]"
-	local OnCyan="\[\033[46m\]"
-	local OnWhite="\[\033[47m\]"
-
-	# High intensity
-	local IntenseBlack="\[\033[0;90m\]"
-	local IntenseRed="\[\033[0;91m\]"
-	local IntenseGreen="\[\033[0;92m\]"
-	local IntenseYellow="\[\033[0;93m\]"
-	local IntenseBlue="\[\033[0;94m\]"
-	local IntensePurple="\[\033[0;95m\]"
-	local IntenseCyan="\[\033[0;96m\]"
-	local IntenseWhite="\[\033[0;97m\]"
-
-	# Bold high intensity
-	local BoldIntenseBlack="\[\033[1;90m\]"
-	local BoldIntenseRed="\[\033[1;91m\]"
-	local BoldIntenseGreen="\[\033[1;92m\]"
-	local BoldIntenseYellow="\[\033[1;93m\]"
-	local BoldIntenseBlue="\[\033[1;94m\]"
-	local BoldIntensePurple="\[\033[1;95m\]"
-	local BoldIntenseCyan="\[\033[1;96m\]"
-	local BoldIntenseWhite="\[\033[1;97m\]"
-
-	# High intensity background
-	local OnIntenseBlack="\[\033[0;100m\]"
-	local OnIntenseRed="\[\033[0;101m\]"
-	local OnIntenseGreen="\[\033[0;102m\]"
-	local OnIntenseYellow="\[\033[0;103m\]"
-	local OnIntenseBlue="\[\033[0;104m\]"
-	local OnIntensePurple="\[\033[0;105m\]"
-	local OnIntenseCyan="\[\033[0;106m\]"
-	local OnIntenseWhite="\[\033[0;107m\]"
-
-	# Variables
-	local Time24hhmmss="\t"
-	local PathShort="\W"
-	local PathFull="\w"
-	local NewLine="\n"
-
-
 	# Print previous error code in red
 	PS1='$(es=$? ; case $es in 0|130) ;; *) echo "'$BoldRed'$es|'$ResetColor'" ;; esac)'
 	# Print current time in yellow
