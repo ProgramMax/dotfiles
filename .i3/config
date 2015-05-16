@@ -201,3 +201,4 @@ bar {
 
 # My favorite programs
 bindsym $sup+c exec chromium
+bindsym $sup+p exec import -window root ~/screenshot.png
