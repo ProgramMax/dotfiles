@@ -2,9 +2,10 @@ XTerm*Background: #2c2c2e
 XTerm*Foreground: #9f9f9f
 XTerm*saveLines: 1000
 XTerm*geometry: +50+100
-XTerm*faceName: Source Code Pro for Powerline:size=8, \
-                fixed:size=8
-URxvt.letterSpace: -1
+!XTerm*faceName: Source Code Pro for Powerline:size=8, \
+!                fixed:size=8
+XTerm*faceName: Droid Sans Mono:size=10, fixed:size=10
+!URxvt.letterSpace: -1
 
 
 ! terminal colors

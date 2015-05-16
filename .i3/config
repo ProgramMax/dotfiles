@@ -21,7 +21,8 @@ new_float normal 3 px
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-font pango:Source code Pro for Powerline 10px
+# font pango:Source code Pro for Powerline 10px
+font pango:Droid Sans Mono 24px
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -187,6 +188,7 @@ bar {
 
 	#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	font pango:Source Code Pro for Powerline, FontAwesome 10px
+	#font pango:Droid Sans Mono, FontAwesome 10px
 
 	colors {
 		background $bg
