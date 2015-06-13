@@ -153,7 +153,8 @@ function make_ps1() {
 }
 
 function make_ps2() {
-	PS2="$BoldWhite└─> $ResetColor"
+	PS2="$BoldWhite└──> $ResetColor"
+
 	export PS2
 }
 
