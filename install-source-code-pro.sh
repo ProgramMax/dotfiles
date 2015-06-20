@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir /tmp/adobefont
 cd /tmp/adobefont
-wget http://github.com/adobe-fonts/source-code-pro/archive/1.017.zip
+wget https://github.com/adobe-fonts/source-code-pro/archive/1.017.zip
 unzip 1.017.zip
 mkdir -p ~/.fonts
 cp source-code-pro-1.017/OTF/*.otf ~/.fonts
