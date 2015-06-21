@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export PATH=$PATH:/usr/lib/emscripten
+
+
 shopt -s checkwinsize
 
 
@@ -153,8 +156,7 @@ function make_ps1() {
 }
 
 function make_ps2() {
-	PS2="$BoldWhite└──> $ResetColor"
-
+	PS2="$BoldWhite└─> $ResetColor"
 	export PS2
 }
 
@@ -175,4 +177,31 @@ function make_prompts() {
 	make_ps4
 }
 
-PROMPT_COMMAND=make_prompts
+
+function set_file_system_node_colors() {
+	# directory
+	LS_COLORS=$LS_COLORS'di=0;35:'
+
+	# file
+	LS_COLORS=$LS_COLORS'fi=0;0:'
+
+	# symbolic link
+	LS_COLORS=$LS_COLORS'ln=0;32:'
+
+	# symbolic link pointing to a non-existent file (orphan)
+	LS_COLORS=$LS_COLORS'or=01;32:'
+
+	# executable
+	LS_COLORS=$LS_COLORS'ex=0;1:'
+
+	export LS_COLORS
+}
+
+function do_stuff() {
+	make_prompts
+	set_file_system_node_colors
+}
+
+PROMPT_COMMAND=do_stuff
+
+alias ls='ls --color -F'
