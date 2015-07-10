@@ -22,7 +22,7 @@ new_float normal 3 px
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 # font pango:Source code Pro for Powerline 10px
-font pango:Droid Sans Mono 24px
+font pango:Droid Sans Mono 12px
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
