@@ -1,0 +1,7 @@
+There is a fantastic icon font
+viewable at https://www.dropbox.com/s/9iysh2i0gadi4ic/icons.pdf
+
+On ArchLinux, yaourt ttf-font-icons
+Then in the i3 config: font pango:Inconsolata, Icons 12
+
+Just copy and past from that pdf
