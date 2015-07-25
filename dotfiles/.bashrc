@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 export PATH=$PATH:/usr/lib/emscripten
-
+export EDITOR=vim
 
 shopt -s checkwinsize
 
