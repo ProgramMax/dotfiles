@@ -1,6 +1,7 @@
 urxvt*scrollBar:       false
 urxvt*secondaryScroll: true
 urxvt*saveLines:       1000
+urxvt*dynamicColors:   on
 
 xft.antialias: true
 xft.hinting:   true
