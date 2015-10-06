@@ -88,6 +88,9 @@ NewLine="\n"
 Username="\u"
 MachineName="\h"
 
+# Actions
+Alert="\a"
+
 function make_ps1() {
 	local ErrorCode=$?
 
@@ -95,7 +98,7 @@ function make_ps1() {
 
 
 	# First line
-	PS1="$BoldWhite┌─"
+	PS1="$Alert$BoldWhite┌─"
 
 	# If there is an error code, print it in a box
 	if [ $ErrorCode != 0 ] ; then
