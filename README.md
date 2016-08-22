@@ -15,7 +15,7 @@ Information dense, visually light
 
 ![Command prompt](/documentation/prompt.png)
 
-* highlights workspaces / windows when a long-running tasks completes, like compiles
+* highlights workspaces / windows when long-running tasks complete, like compiles
 
 ![Highlited workspace](/documentation/long-running-highlight.png)
 
