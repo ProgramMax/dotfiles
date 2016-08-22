@@ -26,7 +26,7 @@ Information dense, visually light
 ## Installation
 
 * ```git clone https://github.com/ProgramMax/dotfiles.git```
-* edit .gitconfig to your own identiy
+* edit .gitconfig to your own identity
 * install i3, wget, and unzip
 * run font scripts
 * copy files to ~
