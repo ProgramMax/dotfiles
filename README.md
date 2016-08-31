@@ -19,7 +19,7 @@ Information dense, visually light
 
 ![Highlited workspace](/documentation/long-running-highlight.png)
 
-* i3bar shows useful info like if you are on battery power and how much battery time is left (highlighting in red if it is low)
+* i3bar shows system status, highlighting problems like low battery
 * the colors are calm
 * the layout is minimalist
 
