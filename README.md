@@ -13,7 +13,7 @@ Information dense, visually light
     * git branch highlighted if there are changes
     * username highlighted if root
 
-![Command prompt](/documentation/prompt.gif)
+![Command prompt](/documentation/prompt.png)
 
 * highlights workspaces / windows when a long-running tasks completes, like compiles
 
