@@ -30,6 +30,7 @@ Information dense, visually light
 * install i3, wget, and unzip
 * run font scripts
 * copy files to ~
+* [instructions for installing fonts](/documentation/font-installation.md)
 
 ## Engage
 
