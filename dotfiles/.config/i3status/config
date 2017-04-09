@@ -55,15 +55,15 @@ disk "/" {
 }
 
 wireless wls1 {
-	# format_up   = "W: %quality on %essid, %bitrate %ip"
+	# format_up   = ": %quality on %essid, %bitrate %ip"
 	format_up   = ": %quality on %essid, %bitrate"
 	format_down = ": down"
 }
 
 ethernet enp3s0 {
-	# format_up   = "E: %ip (%speed)"
-	format_up   = "E: %speed"
-	format_down = "E: down"
+	# format_up   = ": %ip (%speed)"
+	format_up   = ": %speed"
+	format_down = ": down"
 }
 
 run_watch DHCP {
