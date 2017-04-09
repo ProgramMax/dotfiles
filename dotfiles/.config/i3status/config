@@ -56,8 +56,8 @@ disk "/" {
 
 wireless wls1 {
 	# format_up   = "W: %quality on %essid, %bitrate %ip"
-	format_up   = "W: %quality on %essid, %bitrate"
-	format_down = "W: down"
+	format_up   = ": %quality on %essid, %bitrate"
+	format_down = ": down"
 }
 
 ethernet enp3s0 {
