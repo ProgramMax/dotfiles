@@ -29,10 +29,11 @@ Information dense, visually light
 * edit .gitconfig to your own identity
 * install i3, wget, and unzip
 * run font scripts
-* copy files to ~
+* copy files from ./dotfiles to ~
 * [instructions for installing fonts](/documentation/font-installation.md)
 
 ## Engage
 
-* **Contribute:** I accept pull requests.
+* **Community:** We have a welcoming community which follows the [Code of Conduct](/code_of_conduct.md)
+* **Contribute:** We accept pull requests.
 * **Support:** You can report bugs and request changes using GitHub issues.
