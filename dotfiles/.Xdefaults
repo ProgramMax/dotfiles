@@ -8,9 +8,8 @@ xft.antialias: true
 xft.hinting:   true
 xft.hintstyle: hintsligiht
 
-!urxvt*font: xft:Source Code Pro:pixelsize=10:antialias=true:hinting=true,fixed:pixelsize:10
-!urxvt*letterSpace: -1
-urxvt*font: xft:Droid Sans Mono:pixelsize=10:antialias=true:hinting=true,fixed:pixelsize:10
+urxvt*font: xft:DejaVu Sans Mono:pixelsize=10:antialias=true:hinting=true,fixed:pixelsize:10
+
 
 urxvt*background: #2c2c2c
 urxvt*foreground: #9f9f9f
