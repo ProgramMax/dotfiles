@@ -26,8 +26,7 @@ Information dense, visually light
 ## Installation
 
 * ```git clone https://github.com/ProgramMax/dotfiles.git```
-* install i3, wget, and unzip
-* [instructions for installing fonts](/documentation/font-installation.md)
+* install i3
 * copy files from ./dotfiles to ~
 
 ## Engage
