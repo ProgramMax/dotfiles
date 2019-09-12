@@ -7,78 +7,57 @@ export EDITOR=vim
 shopt -s checkwinsize
 
 
-# Reset
-ResetColor="\[\033[0m\]"
+
+# Formatting
+ResetColor="\e[0m"
+Bold="\e[1m"
+Dim="\e[2m"
+Italic="\e[3m"
+Underline="\e[4m"
+Blink="\e[5m"
+InvertColors="\e[7m"
+Hidden="\e[8m"
+Strikethrough="\e[9m"
 
 # Regular colors
-Black="\[\033[0;30m\]"
-Red="\[\033[0;31m\]"
-Green="\[\033[0;32m\]"
-Yellow="\[\033[0;33m\]"
-Blue="\[\033[0;34m\]"
-Purple="\[\033[0;35m\]"
-Cyan="\[\033[0;36m\]"
-White="\[\033[0;37m\]"
-
-# Bold
-BoldBlack="\[\033[1;30m\]"
-BoldRed="\[\033[1;31m\]"
-BoldGreen="\[\033[1;32m\]"
-BoldYellow="\[\033[1;33m\]"
-BoldBlue="\[\033[1;34m\]"
-BoldPurple="\[\033[1;35m\]"
-BoldCyan="\[\033[1;36m\]"
-BoldWhite="\[\033[1;37m\]"
-
-# Underline
-UnderlineBlack="\[\033[4;30m\]"
-UnderlineRed="\[\033[4;31m\]"
-UnderlineGreen="\[\033[4;32m\]"
-UnderlineYellow="\[\033[4;33m\]"
-UnderlineBlue="\[\033[4;34m\]"
-UnderlinePurple="\[\033[4;35m\]"
-UnderlineCyan="\[\033[4;36m\]"
-UnderlineWhite="\[\033[4;37m\]"
+Black="\e[30m"
+Red="\e[31m"
+Green="\e[32m"
+Yellow="\e[33m"
+Blue="\e[34m"
+Purple="\e[35m"
+Cyan="\e[36m"
+White="\e[37m"
 
 # Background
-OnBlack="\[\033[40m\]"
-OnRed="\[\033[41m\]"
-OnGreen="\[\033[42m\]"
-OnYellow="\[\033[43m\]"
-OnBlue="\[\033[44m\]"
-OnPurple="\[\033[45m\]"
-OnCyan="\[\033[46m\]"
-OnWhite="\[\033[47m\]"
+OnBlack="\e[40m"
+OnRed="\e[41m"
+OnGreen="\e[42m"
+OnYellow="\e[43m"
+OnBlue="\e[44me"
+OnPurple="\e[45m"
+OnCyan="\e[46m"
+OnWhite="\e[47me"
 
 # High intensity
-IntenseBlack="\[\033[0;90m\]"
-IntenseRed="\[\033[0;91m\]"
-IntenseGreen="\[\033[0;92m\]"
-IntenseYellow="\[\033[0;93m\]"
-IntenseBlue="\[\033[0;94m\]"
-IntensePurple="\[\033[0;95m\]"
-IntenseCyan="\[\033[0;96m\]"
-IntenseWhite="\[\033[0;97m\]"
-
-# Bold high intensity
-BoldIntenseBlack="\[\033[1;90m\]"
-BoldIntenseRed="\[\033[1;91m\]"
-BoldIntenseGreen="\[\033[1;92m\]"
-BoldIntenseYellow="\[\033[1;93m\]"
-BoldIntenseBlue="\[\033[1;94m\]"
-BoldIntensePurple="\[\033[1;95m\]"
-BoldIntenseCyan="\[\033[1;96m\]"
-BoldIntenseWhite="\[\033[1;97m\]"
+IntenseBlack="\e[90m"
+IntenseRed="\e[91m"
+IntenseGreen="\e[92m"
+IntenseYellow="\e[93m"
+IntenseBlue="\e[94m"
+IntensePurple="\e[95m"
+IntenseCyan="\e[96m"
+IntenseWhite="\e[97m"
 
 # High intensity background
-OnIntenseBlack="\[\033[0;100m\]"
-OnIntenseRed="\[\033[0;101m\]"
-OnIntenseGreen="\[\033[0;102m\]"
-OnIntenseYellow="\[\033[0;103m\]"
-OnIntenseBlue="\[\033[0;104m\]"
-OnIntensePurple="\[\033[0;105m\]"
-OnIntenseCyan="\[\033[0;106m\]"
-OnIntenseWhite="\[\033[0;107m\]"
+OnIntenseBlack="\e[100m"
+OnIntenseRed="\e[101m"
+OnIntenseGreen="\e[102m"
+OnIntenseYellow="\e[103m"
+OnIntenseBlue="\e[104m"
+OnIntensePurple="\e[105m"
+OnIntenseCyan="\e[106m"
+OnIntenseWhite="\e[107m"
 
 # Variables
 Time24hhmmss="\t"
@@ -98,11 +77,11 @@ function make_ps1() {
 
 
 	# First line
-	PS1="$Alert$BoldWhite┌─"
+	PS1="$Bold$White┌─"
 
 	# If there is an error code, print it in a box
 	if [ $ErrorCode != 0 ] ; then
-		PS1=$PS1"[$Red$ErrorCode$BoldWhite]─"
+		PS1=$PS1"[$Red$ErrorCode$Bold$White]─"
 	fi
 
 	# Print the username and system name
@@ -113,7 +92,7 @@ function make_ps1() {
 	else
 		PS1=$PS1"$Yellow"
 	fi
-	PS1=$PS1$Username$BoldWhite@$IntenseCyan$MachineName$BoldWhite"]─"
+	PS1=$PS1$Username$Bold$White@$IntenseCyan$MachineName$Bold$White"]─"
 
 	# Print the working directory, highlighting the git root
 	PS1=$PS1"[$Green"
@@ -133,7 +112,7 @@ function make_ps1() {
 	else
 		PS1=$PS1$Green$Path
 	fi
-	PS1=$PS1$BoldWhite"]"
+	PS1=$PS1$Bold$White"]"
 
 	# Print the git branch if it exists
 	if git branch &>/dev/null ; then
@@ -145,7 +124,7 @@ function make_ps1() {
 			# There is nothing to commit
 			PS1=$PS1$Green
 		fi
-		PS1=$PS1$(git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/\1/')$BoldWhite"]"
+		PS1=$PS1$(git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/\1/')$Bold$White"]"
 	fi
 	PS1=$PS1"\n"
 
@@ -153,23 +132,23 @@ function make_ps1() {
 
 
 	# Second line
-	PS1=$PS1"$BoldWhite└──> $ResetColor"
+	PS1=$PS1"$Bold$White└──> $ResetColor"
 
 	export PS1
 }
 
 function make_ps2() {
-	PS2="$BoldWhite└──> $ResetColor"
+	PS2="$Bold$White└──> $ResetColor"
 	export PS2
 }
 
 function make_ps3() {
-	PS3="$BoldWhite> $ResetColor"
+	PS3="$Bold$White> $ResetColor"
 	export PS3
 }
 
 function make_ps4() {
-	PS4="$BoldWhite+ $ResetColor"
+	PS4="$Bold$White+ $ResetColor"
 	export PS4
 }
 
